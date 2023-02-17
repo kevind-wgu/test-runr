@@ -30,11 +30,14 @@ To test I would hit each endpoint twice with 2 different values (1, 2).
 Then I would go to the JobRunr dashboard and look at Recurring Jobs where it lists the "JobName". There you can see 
 the generated job name has the cached values. You can also wait for the job to run but that takes longer.
 
+When the endpoint is run I immediately run the lamda to show that the caching hasn't happened yet. Then when JobRunr 
+runs the lambda you will see the values are cached based on the output.
+
 ### Example
 ```
 mvn clean install
 docker-compose up -d db
-java -jar target/test-runr-0.1.jar
+java -jar target/test-runr.jar
 
 PUT http://localhost:8000/v1/schedule/1/int
 PUT http://localhost:8000/v1/schedule/2/int
